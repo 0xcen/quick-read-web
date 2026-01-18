@@ -497,3 +497,91 @@ kbd {
     display: none !important;
   }
 }
+
+/* Download page */
+.download-page {
+  max-width: 480px;
+  text-align: center;
+}
+
+.download-page h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.download-btn {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  padding: 0.875rem 2rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.download-instructions {
+  margin-top: 2.5rem;
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.download-instructions p {
+  margin-bottom: 0.75rem;
+}
+
+.download-instructions ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.download-instructions li {
+  margin-bottom: 0.5rem;
+}
+
+.download-instructions code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.download-instructions kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.download-footer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.download-footer a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.download-footer a:hover {
+  opacity: 0.8;
+}

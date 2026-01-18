@@ -26,18 +26,12 @@ export default async function handler(req, res) {
             <p style="color: #666; line-height: 1.6; margin-bottom: 30px;">
               Thanks for trying QuickRead. Here's your download link:
             </p>
-            <a href="https://github.com/0xcen/quick-read/releases/latest" 
-               style="display: inline-block; background: #ff3b30; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 500;">
+            <a href="${process.env.SITE_URL || 'https://quickread.app'}/download" 
+               style="display: inline-block; background: #000; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 500;">
               Download QuickRead
             </a>
-            <p style="color: #999; font-size: 14px; margin-top: 40px; line-height: 1.6;">
-              After downloading:<br>
-              1. Open the DMG and drag QuickRead to Applications<br>
-              2. Run: <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px;">xattr -cr /Applications/QuickRead.app</code><br>
-              3. Launch and press ⌘⇧R on any article
-            </p>
             <p style="color: #999; font-size: 14px; margin-top: 30px;">
-              <a href="https://github.com/0xcen/quick-read" style="color: #666;">View on GitHub</a>
+              <a href="https://twitter.com/carlos_0x" style="color: #666;">Follow me on X</a> · <a href="https://github.com/0xcen/quick-read" style="color: #666;">View on GitHub</a>
             </p>
           </div>
         `,
