@@ -1,10 +1,12 @@
 const pitchText = `Did you know you can read at over 400 words per minute?
 
+Me neither. Until I saw this viral tweet.
+
 It's called RSVP. Words come to you one at a time, so your eyes stay still. The red letter keeps your focus locked in place.
 
 That's it. That's the whole trick.
 
-This app does one thing. You press a hotkey, it grabs the article from your browser, and you read it. Full screen. No distractions.
+So I made QuickRead. One hotkey, it grabs the article from your browser, and you read it. Full screen. No distractions.
 
 Fully open source. No subscriptions. Entirely local.
 

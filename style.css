@@ -251,6 +251,16 @@ kbd {
   margin-bottom: 0;
 }
 
+.pitch-text a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pitch-text a:hover {
+  opacity: 0.8;
+}
+
 .email-form {
   display: flex;
   flex-direction: row;
