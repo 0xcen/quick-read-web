@@ -168,8 +168,7 @@ kbd {
 }
 
 .progress-container {
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   height: 4px;
   background: var(--surface);
   border-radius: 2px;
@@ -347,36 +346,35 @@ kbd {
 /* Custom text state */
 #custom-state {
   width: 100%;
-  max-width: 800px;
+  max-width: 560px;
   text-align: center;
 }
 
 #custom-state h2 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--text-muted);
 }
 
 .custom-form {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1rem;
 }
 
 #custom-input {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: none;
   color: var(--text);
-  padding: 1.25rem;
-  font-size: 0.9rem;
+  padding: 1rem;
+  font-size: 0.875rem;
   font-family: inherit;
   line-height: 1.6;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
   outline: none;
   resize: none;
-  min-height: 160px;
+  min-height: 140px;
   transition: all 0.2s ease;
 }
 
@@ -390,7 +388,7 @@ kbd {
 }
 
 .custom-form .submit-btn {
-  border-radius: 0 0 8px 8px;
+  border-radius: 8px;
   padding: 0.875rem 1.5rem;
 }
 

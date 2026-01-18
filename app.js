@@ -214,14 +214,9 @@ class RSVPReader {
     this.currentIndex = 0;
     this.keyboardHints.classList.remove('visible');
     this.keyboardHints.classList.add('hidden');
-    
-    if (this.isCustomText) {
-      this.isCustomText = false;
-      this.parseText(pitchText);
-      this.setState('email');
-    } else {
-      this.setState('ready');
-    }
+    this.isCustomText = false;
+    this.parseText(pitchText);
+    this.setState('email');
   }
 
   setState(state) {
