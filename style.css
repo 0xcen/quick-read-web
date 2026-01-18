@@ -79,21 +79,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text);
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.9rem;
   font-family: inherit;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .play-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .play-icon {
@@ -302,14 +300,14 @@ kbd {
 
 #email-input {
   flex: 1;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-right: none;
   color: var(--text);
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1rem;
   font-size: 0.875rem;
   font-family: inherit;
-  border-radius: 6px 0 0 6px;
+  border-radius: 8px 0 0 8px;
   outline: none;
   transition: all 0.2s ease;
 }
@@ -319,25 +317,26 @@ kbd {
 }
 
 #email-input:focus {
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .submit-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text);
-  padding: 0.75rem 1.25rem;
+  padding: 0.875rem 1.5rem;
   font-size: 0.875rem;
   font-family: inherit;
   font-weight: 400;
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 8px 8px 0;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .submit-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .submit-btn:disabled {
@@ -348,13 +347,13 @@ kbd {
 /* Custom text state */
 #custom-state {
   width: 100%;
-  max-width: 640px;
+  max-width: 800px;
   text-align: center;
 }
 
 #custom-state h2 {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
   color: var(--text-muted);
 }
@@ -363,28 +362,22 @@ kbd {
   display: flex;
   flex-direction: column;
   gap: 0;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  overflow: hidden;
 }
 
 #custom-input {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: none;
   color: var(--text);
-  padding: 1.5rem;
-  font-size: 1rem;
+  padding: 1.25rem;
+  font-size: 0.9rem;
   font-family: inherit;
   line-height: 1.6;
-  border-radius: 0;
+  border-radius: 8px 8px 0 0;
   outline: none;
   resize: none;
-  min-height: 180px;
-  transition: background 0.2s ease;
+  min-height: 160px;
+  transition: all 0.2s ease;
 }
 
 #custom-input::placeholder {
@@ -392,22 +385,13 @@ kbd {
 }
 
 #custom-input:focus {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .custom-form .submit-btn {
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  padding: 1rem 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  transition: all 0.2s ease;
-}
-
-.custom-form .submit-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
+  border-radius: 0 0 8px 8px;
+  padding: 0.875rem 1.5rem;
 }
 
 /* Results state */
@@ -432,8 +416,8 @@ kbd {
 }
 
 #results-state .submit-btn {
-  border-radius: 6px;
-  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  padding: 0.875rem 1.75rem;
 }
 
 /* Success state */
