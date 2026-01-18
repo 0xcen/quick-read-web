@@ -73,19 +73,6 @@ class RSVPReader {
     const after = word.slice(orpIndex + 1);
     
     this.wordDisplay.innerHTML = `<span class="before">${before}</span><span class="orp">${orp}</span><span class="after">${after}</span>`;
-    
-    // Center the ORP character
-    requestAnimationFrame(() => {
-      const orpEl = this.wordDisplay.querySelector('.orp');
-      if (orpEl) {
-        const containerCenter = this.wordDisplay.parentElement.offsetWidth / 2;
-        const orpRect = orpEl.getBoundingClientRect();
-        const wordRect = this.wordDisplay.getBoundingClientRect();
-        const orpCenter = orpRect.left - wordRect.left + orpRect.width / 2;
-        const offset = containerCenter - orpCenter;
-        this.wordDisplay.style.transform = `translateX(${offset}px)`;
-      }
-    });
   }
 
   updateProgress() {
