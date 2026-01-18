@@ -347,34 +347,44 @@ kbd {
 
 /* Custom text state */
 #custom-state {
-  max-width: 480px;
-  text-align: left;
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
 }
 
 #custom-state h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 500;
   margin-bottom: 1.5rem;
+  color: var(--text-muted);
 }
 
 .custom-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 #custom-input {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text);
-  padding: 1rem;
-  font-size: 0.875rem;
+  padding: 1.5rem;
+  font-size: 1rem;
   font-family: inherit;
-  border-radius: 6px;
+  line-height: 1.6;
+  border-radius: 0;
   outline: none;
-  resize: vertical;
-  min-height: 120px;
-  transition: border-color 0.2s ease;
+  resize: none;
+  min-height: 180px;
+  transition: background 0.2s ease;
 }
 
 #custom-input::placeholder {
@@ -382,11 +392,22 @@ kbd {
 }
 
 #custom-input:focus {
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .custom-form .submit-btn {
-  border-radius: 6px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.custom-form .submit-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
 }
 
 /* Results state */

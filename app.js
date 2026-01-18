@@ -133,11 +133,27 @@ class RSVPReader {
   start() {
     this.setState('reading');
     this.currentIndex = 0;
-    this.isPlaying = true;
-    this.startTime = Date.now();
+    this.isPlaying = false;
     this.keyboardHints.classList.remove('hidden');
     this.keyboardHints.classList.add('visible');
-    this.advance();
+    this.startCountdown();
+  }
+
+  startCountdown() {
+    let count = 3;
+    this.renderWord(String(count));
+    
+    const countdownInterval = setInterval(() => {
+      count--;
+      if (count > 0) {
+        this.renderWord(String(count));
+      } else {
+        clearInterval(countdownInterval);
+        this.isPlaying = true;
+        this.startTime = Date.now();
+        this.advance();
+      }
+    }, 600);
   }
 
   pause() {
@@ -196,9 +212,16 @@ class RSVPReader {
   reset() {
     this.pause();
     this.currentIndex = 0;
-    this.setState('ready');
     this.keyboardHints.classList.remove('visible');
     this.keyboardHints.classList.add('hidden');
+    
+    if (this.isCustomText) {
+      this.isCustomText = false;
+      this.parseText(pitchText);
+      this.setState('email');
+    } else {
+      this.setState('ready');
+    }
   }
 
   setState(state) {
