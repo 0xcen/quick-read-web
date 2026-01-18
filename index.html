@@ -64,6 +64,31 @@
             <span id="submit-text">download</span>
           </button>
         </form>
+        <button id="try-own-text" class="try-link">try it with your own text</button>
+      </div>
+
+      <!-- Custom text input state -->
+      <div id="custom-state" class="state hidden">
+        <h2>Paste your text</h2>
+        <form id="custom-form" class="custom-form">
+          <textarea 
+            id="custom-input" 
+            placeholder="Paste any text here..."
+            rows="6"
+            required
+          ></textarea>
+          <button type="submit" class="submit-btn">Start reading</button>
+        </form>
+        <button id="back-from-custom" class="back-link">← back</button>
+      </div>
+
+      <!-- Results state -->
+      <div id="results-state" class="state hidden">
+        <div class="results-content">
+          <h1 id="results-wpm">450 WPM</h1>
+          <p class="results-detail"><span id="results-words">0</span> words in <span id="results-time">0</span> seconds</p>
+        </div>
+        <button id="back-to-download" class="submit-btn">Get QuickRead</button>
       </div>
 
       <!-- Success state -->

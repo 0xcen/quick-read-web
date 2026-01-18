@@ -261,6 +261,38 @@ kbd {
   opacity: 0.8;
 }
 
+.try-link {
+  display: block;
+  margin-top: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.try-link:hover {
+  color: var(--text);
+}
+
+.back-link {
+  display: block;
+  margin-top: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
 .email-form {
   display: flex;
   flex-direction: row;
@@ -311,6 +343,76 @@ kbd {
 .submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Custom text state */
+#custom-state {
+  max-width: 480px;
+  text-align: left;
+}
+
+#custom-state h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#custom-input {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--text);
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.2s ease;
+}
+
+#custom-input::placeholder {
+  color: var(--text-muted);
+}
+
+#custom-input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.custom-form .submit-btn {
+  border-radius: 6px;
+}
+
+/* Results state */
+#results-state {
+  text-align: center;
+}
+
+.results-content {
+  margin-bottom: 2rem;
+}
+
+#results-wpm {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.results-detail {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+#results-state .submit-btn {
+  border-radius: 6px;
+  padding: 0.875rem 2rem;
 }
 
 /* Success state */
