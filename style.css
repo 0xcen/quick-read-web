@@ -50,7 +50,8 @@ body {
 
 .reader-container {
   text-align: center;
-  max-width: 800px;
+  width: 100%;
+  max-width: 1000px;
   padding: 2rem;
 }
 
@@ -220,7 +221,8 @@ kbd {
 
 /* Email state */
 #email-state {
-  max-width: 480px;
+  width: 100%;
+  max-width: 520px;
   text-align: left;
 }
 
@@ -346,7 +348,7 @@ kbd {
 /* Custom text state */
 #custom-state {
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   text-align: center;
 }
 
