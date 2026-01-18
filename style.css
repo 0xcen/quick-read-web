@@ -25,10 +25,8 @@ body {
 .desktop-bg {
   position: fixed;
   inset: 0;
-  background: 
-    linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: url('bg.png') no-repeat center center;
   background-size: cover;
-  background-position: center;
   z-index: 0;
 }
 
