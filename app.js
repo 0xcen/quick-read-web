@@ -8,7 +8,7 @@ That's it. That's the whole trick.
 
 So I made QuickRead. One hotkey, it grabs the article from your browser, and you read it. Full screen. No distractions.
 
-Free, open source, runs entirely on your Mac.
+QuickRead is free, open source, and runs natively on your Mac.
 
 I build things like this sometimes. You can find me on X.
 
