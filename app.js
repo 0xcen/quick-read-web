@@ -1,4 +1,4 @@
-const pitchText = `Did you know you can read at 500 words per minute?
+const pitchText = `Did you know you can read at over 400 words per minute?
 
 It's called RSVP. Words come to you one at a time, so your eyes stay still. The red letter keeps your focus locked in place.
 
@@ -14,7 +14,7 @@ class RSVPReader {
   constructor() {
     this.words = [];
     this.currentIndex = 0;
-    this.wpm = 500;
+    this.wpm = 400;
     this.isPlaying = false;
     this.timer = null;
     this.state = 'ready'; // ready, reading, email, success
