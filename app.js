@@ -1,28 +1,14 @@
-const pitchText = `hi, this is QuickRead.
+const pitchText = `Did you know you can read at 500 words per minute?
 
-a mac app i made for myself.
+It's called RSVP. Words come to you one at a time, so your eyes stay still. The red letter keeps your focus locked in place.
 
-one hotkey to grab any article from your browser and read it at 500 words per minute.
+That's it. That's the whole trick.
 
-no eye movement. just absorption.
+This app does one thing. You press a hotkey, it grabs the article from your browser, and you read it. Full screen. No distractions.
 
-the red letter you see is the ORP — optimal recognition point.
+Fully open source. No subscriptions. Entirely local.
 
-it's where your brain naturally wants to look first.
-
-we keep it centered so your eyes never move.
-
-full-screen. no distractions. just you and the words.
-
-built in native swift.
-
-open-source.
-
-all local.
-
-free.
-
-enjoy.`;
+Enjoy.`;
 
 class RSVPReader {
   constructor() {
