@@ -346,7 +346,7 @@ kbd {
 /* Custom text state */
 #custom-state {
   width: 100%;
-  max-width: 720px;
+  max-width: 480px;
   text-align: center;
 }
 
