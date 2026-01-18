@@ -529,6 +529,12 @@ kbd {
   background: rgba(255, 255, 255, 0.12);
 }
 
+.system-req {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
 .download-instructions {
   margin-top: 2.5rem;
   text-align: left;
