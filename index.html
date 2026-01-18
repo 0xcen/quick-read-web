@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickRead - Read anything at 500 WPM</title>
+  <meta name="description" content="A native macOS speed reader. One hotkey to read any article at 500 WPM.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="desktop-bg"></div>
+  
+  <div class="overlay">
+    <div class="reader-container">
+      <!-- Ready state -->
+      <div id="ready-state" class="state">
+        <h1 class="logo">QuickRead</h1>
+        <p class="tagline">read anything at 500 WPM with a single hotkey</p>
+        <button id="play-btn" class="play-button">
+          <span class="play-icon">▶</span>
+          <span>Press Play</span>
+        </button>
+        <p class="hint">or press <kbd>Space</kbd></p>
+      </div>
+
+      <!-- Reading state -->
+      <div id="reading-state" class="state hidden">
+        <div class="word-container">
+          <div class="orp-line"></div>
+          <div id="word-display" class="word"></div>
+        </div>
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div class="controls">
+          <span id="wpm-display">500 WPM</span>
+          <span class="separator">·</span>
+          <span id="progress-text">0%</span>
+        </div>
+      </div>
+
+      <!-- Email state -->
+      <div id="email-state" class="state hidden">
+        <h2 class="cta-title">get QuickRead</h2>
+        <p class="cta-subtitle">free. open-source. all local.</p>
+        <form id="email-form" class="email-form">
+          <input 
+            type="email" 
+            id="email-input" 
+            placeholder="your@email.com" 
+            required 
+            autocomplete="email"
+          >
+          <button type="submit" class="submit-btn">
+            <span id="submit-text">Send Download Link</span>
+          </button>
+        </form>
+        <a href="https://github.com/0xcen/quick-read/releases" class="skip-link">or download directly from GitHub</a>
+      </div>
+
+      <!-- Success state -->
+      <div id="success-state" class="state hidden">
+        <div class="success-icon">✓</div>
+        <h2>Check your inbox</h2>
+        <p class="success-text">Download link sent to <span id="sent-email"></span></p>
+        <a href="https://github.com/0xcen/quick-read" class="github-link">Star on GitHub →</a>
+      </div>
+
+      <!-- Keyboard hints -->
+      <div id="keyboard-hints" class="keyboard-hints hidden">
+        <span><kbd>Space</kbd> pause</span>
+        <span><kbd>↑↓</kbd> speed</span>
+        <span><kbd>Esc</kbd> exit</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
