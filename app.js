@@ -328,5 +328,20 @@ class RSVPReader {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.querySelector('.overlay');
+  const bgImage = new Image();
+  bgImage.src = 'bg.jpg';
+  
+  bgImage.onload = () => {
+    setTimeout(() => {
+      overlay.classList.add('visible');
+    }, 1000);
+  };
+  
+  // Fallback if image fails to load
+  bgImage.onerror = () => {
+    overlay.classList.add('visible');
+  };
+  
   new RSVPReader();
 });
