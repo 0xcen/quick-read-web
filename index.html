@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <script src="lz-string.min.js"></script>
 </head>
 <body>
   <div class="desktop-bg"></div>
@@ -90,7 +91,10 @@
           <h1 id="results-wpm">450 WPM</h1>
           <p class="results-detail"><span id="results-words">0</span> words in <span id="results-time">0</span> seconds</p>
         </div>
-        <button id="back-to-download" class="submit-btn">Get QuickRead</button>
+        <div class="results-actions">
+          <button id="copy-share-link" class="submit-btn">Copy share link</button>
+          <button id="back-to-download" class="submit-btn">Get QuickRead</button>
+        </div>
       </div>
 
       <!-- Success state -->

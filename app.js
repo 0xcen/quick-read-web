@@ -60,6 +60,7 @@ class RSVPReader {
     this.resultsWords = document.getElementById('results-words');
     this.resultsTime = document.getElementById('results-time');
     this.backToDownloadBtn = document.getElementById('back-to-download');
+    this.copyShareLinkBtn = document.getElementById('copy-share-link');
   }
 
   initEventListeners() {
@@ -73,6 +74,7 @@ class RSVPReader {
     this.backFromCustomBtn.addEventListener('click', () => this.setState('email'));
     this.customForm.addEventListener('submit', (e) => this.handleCustomSubmit(e));
     this.backToDownloadBtn.addEventListener('click', () => this.setState('email'));
+    this.copyShareLinkBtn.addEventListener('click', () => this.copyShareLink());
   }
 
   parseText(text) {
@@ -320,9 +322,35 @@ class RSVPReader {
     const text = this.customInput.value.trim();
     if (!text) return;
     
+    this.customTextContent = text;
     this.parseText(text);
     this.isCustomText = true;
     this.start();
+  }
+
+  loadSharedText(text) {
+    this.sharedText = text;
+    this.parseText(text);
+    this.isCustomText = true;
+    // Stay on ready state - user presses play to start
+  }
+
+  getShareUrl() {
+    if (!this.customTextContent) return null;
+    const compressed = LZString.compressToEncodedURIComponent(this.customTextContent);
+    return `${window.location.origin}${window.location.pathname}#text=${compressed}`;
+  }
+
+  copyShareLink() {
+    const url = this.getShareUrl();
+    if (!url) return;
+    
+    navigator.clipboard.writeText(url).then(() => {
+      this.copyShareLinkBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        this.copyShareLinkBtn.textContent = 'Copy share link';
+      }, 2000);
+    });
   }
 }
 
@@ -343,5 +371,19 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.add('visible');
   };
   
-  new RSVPReader();
+  const reader = new RSVPReader();
+  
+  // Check for shared text in URL
+  const hash = window.location.hash;
+  if (hash.startsWith('#text=')) {
+    try {
+      const compressed = hash.slice(6);
+      const text = LZString.decompressFromEncodedURIComponent(compressed);
+      if (text && text.length > 0) {
+        reader.loadSharedText(text);
+      }
+    } catch (e) {
+      console.error('Failed to decompress shared text:', e);
+    }
+  }
 });
