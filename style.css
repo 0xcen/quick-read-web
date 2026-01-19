@@ -397,9 +397,20 @@ kbd {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+.custom-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
 .custom-form .submit-btn {
   border-radius: 8px;
   padding: 0.875rem 1.5rem;
+  flex: 1;
+}
+
+.submit-btn.secondary {
+  background: transparent;
+  flex: 0 0 auto;
 }
 
 /* Results state */

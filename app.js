@@ -55,6 +55,7 @@ class RSVPReader {
     this.customForm = document.getElementById('custom-form');
     this.customInput = document.getElementById('custom-input');
     this.backFromCustomBtn = document.getElementById('back-from-custom');
+    this.shareBeforeReadBtn = document.getElementById('share-before-read');
     
     this.resultsWpm = document.getElementById('results-wpm');
     this.resultsWords = document.getElementById('results-words');
@@ -75,6 +76,7 @@ class RSVPReader {
     this.customForm.addEventListener('submit', (e) => this.handleCustomSubmit(e));
     this.backToDownloadBtn.addEventListener('click', () => this.setState('email'));
     this.copyShareLinkBtn.addEventListener('click', () => this.copyShareLink());
+    this.shareBeforeReadBtn.addEventListener('click', () => this.shareBeforeRead());
   }
 
   parseText(text) {
@@ -349,6 +351,21 @@ class RSVPReader {
       this.copyShareLinkBtn.textContent = 'Copied!';
       setTimeout(() => {
         this.copyShareLinkBtn.textContent = 'Copy share link';
+      }, 2000);
+    });
+  }
+
+  shareBeforeRead() {
+    const text = this.customInput.value.trim();
+    if (!text) return;
+    
+    this.customTextContent = text;
+    const url = this.getShareUrl();
+    
+    navigator.clipboard.writeText(url).then(() => {
+      this.shareBeforeReadBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        this.shareBeforeReadBtn.textContent = 'Share';
       }, 2000);
     });
   }
