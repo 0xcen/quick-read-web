@@ -43,8 +43,6 @@ class RSVPReader {
     this.wpmDisplay = document.getElementById('wpm-display');
     this.progressText = document.getElementById('progress-text');
     this.keyboardHints = document.getElementById('keyboard-hints');
-    this.prevWordBtn = document.getElementById('prev-word');
-    this.nextWordBtn = document.getElementById('next-word');
     
     this.emailForm = document.getElementById('email-form');
     this.emailInput = document.getElementById('email-input');
@@ -76,8 +74,6 @@ class RSVPReader {
     this.customForm.addEventListener('submit', (e) => this.handleCustomSubmit(e));
     this.shareBeforeReadBtn.addEventListener('click', () => this.shareBeforeRead());
     this.readAgainBtn.addEventListener('click', () => this.readAgain());
-    this.prevWordBtn.addEventListener('click', () => this.stepBack());
-    this.nextWordBtn.addEventListener('click', () => this.stepForward());
   }
 
   parseText(text) {

@@ -201,22 +201,6 @@ kbd {
   color: var(--text-muted);
 }
 
-.nav-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
-  color: var(--text-muted);
-  font-size: 1rem;
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text);
-}
-
 .separator {
   opacity: 0.5;
 }
