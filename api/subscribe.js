@@ -26,7 +26,7 @@ export default async function handler(req, res) {
             <p style="color: #666; line-height: 1.6; margin-bottom: 30px;">
               Thanks for trying QuickRead. Here's your download link:
             </p>
-            <a href="${process.env.SITE_URL || 'https://quickread.app'}/download" 
+            <a href="${process.env.SITE_URL || 'https://quickread.so'}/download" 
                style="display: inline-block; background: #000; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 500;">
               Download QuickRead
             </a>
