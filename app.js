@@ -50,7 +50,6 @@ class RSVPReader {
     this.emailInput = document.getElementById('email-input');
     this.submitBtn = this.emailForm.querySelector('.submit-btn');
     this.submitText = document.getElementById('submit-text');
-    this.sentEmail = document.getElementById('sent-email');
     
     this.tryOwnTextBtn = document.getElementById('try-own-text');
     this.customForm = document.getElementById('custom-form');
