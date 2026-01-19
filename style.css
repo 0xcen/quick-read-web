@@ -449,17 +449,21 @@ kbd {
 
 .success-text {
   color: var(--text-muted);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.github-link {
+.success-links {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.success-links a {
   color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.github-link:hover {
+.success-links a:hover {
   opacity: 0.8;
 }
 
