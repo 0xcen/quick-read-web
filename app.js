@@ -215,7 +215,8 @@ class RSVPReader {
     this.keyboardHints.classList.remove('visible');
     this.keyboardHints.classList.add('hidden');
     
-    if (this.isCustomText) {
+    // Only show summary for user-typed custom text (not shared URLs or demo)
+    if (this.customTextContent) {
       const elapsed = (Date.now() - this.startTime) / 1000;
       const wordCount = this.words.length;
       const actualWpm = Math.round((wordCount / elapsed) * 60);
@@ -224,9 +225,10 @@ class RSVPReader {
       this.summaryWords.textContent = wordCount;
       this.summaryTime.textContent = Math.round(elapsed);
       this.readSummary.classList.remove('hidden');
-      
-      this.isCustomText = false;
+    } else {
+      this.readSummary.classList.add('hidden');
     }
+    this.isCustomText = false;
     
     this.setState('email');
     setTimeout(() => this.emailInput.focus(), 300);
@@ -346,7 +348,7 @@ class RSVPReader {
       this.start();
     } else if (this.sharedText) {
       this.parseText(this.sharedText);
-      this.isCustomText = true;
+      this.isCustomText = false; // Don't show summary for shared text
       this.start();
     }
   }
@@ -366,7 +368,7 @@ class RSVPReader {
   loadSharedText(text) {
     this.sharedText = text;
     this.parseText(text);
-    this.isCustomText = true;
+    this.isCustomText = false; // Don't show summary for shared URLs
     // Stay on ready state - user presses play to start
   }
 
