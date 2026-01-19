@@ -292,6 +292,9 @@ kbd {
 .download-form input {
   flex: 1;
   min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
@@ -300,6 +303,7 @@ kbd {
   font-size: 0.875rem;
   font-family: inherit;
   outline: none;
+  box-sizing: border-box;
 }
 
 .download-form input:focus {
