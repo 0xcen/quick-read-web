@@ -91,12 +91,19 @@
       <!-- Results state -->
       <div id="results-state" class="state hidden">
         <div class="results-content">
+          <p class="results-label">You just read at</p>
           <h1 id="results-wpm">450 WPM</h1>
           <p class="results-detail"><span id="results-words">0</span> words in <span id="results-time">0</span> seconds</p>
         </div>
+        <div class="results-pitch">
+          <p>This is <strong>QuickRead</strong> — a free macOS app that speed reads any article with one hotkey. No distractions. Open source.</p>
+        </div>
+        <form id="results-email-form" class="email-form">
+          <input type="email" id="results-email-input" placeholder="your@email.com" required autocomplete="email">
+          <button type="submit" class="submit-btn"><span id="results-submit-text">download</span></button>
+        </form>
         <div class="results-actions">
-          <button id="copy-share-link" class="submit-btn">Copy share link</button>
-          <button id="back-to-download" class="submit-btn">Get QuickRead</button>
+          <button id="copy-share-link" class="text-link">Copy share link</button>
         </div>
       </div>
 

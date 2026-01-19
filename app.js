@@ -60,8 +60,11 @@ class RSVPReader {
     this.resultsWpm = document.getElementById('results-wpm');
     this.resultsWords = document.getElementById('results-words');
     this.resultsTime = document.getElementById('results-time');
-    this.backToDownloadBtn = document.getElementById('back-to-download');
     this.copyShareLinkBtn = document.getElementById('copy-share-link');
+    
+    this.resultsEmailForm = document.getElementById('results-email-form');
+    this.resultsEmailInput = document.getElementById('results-email-input');
+    this.resultsSubmitText = document.getElementById('results-submit-text');
   }
 
   initEventListeners() {
@@ -74,9 +77,9 @@ class RSVPReader {
     this.tryOwnTextBtn.addEventListener('click', () => this.setState('custom'));
     this.backFromCustomBtn.addEventListener('click', () => this.setState('email'));
     this.customForm.addEventListener('submit', (e) => this.handleCustomSubmit(e));
-    this.backToDownloadBtn.addEventListener('click', () => this.setState('email'));
     this.copyShareLinkBtn.addEventListener('click', () => this.copyShareLink());
     this.shareBeforeReadBtn.addEventListener('click', () => this.shareBeforeRead());
+    this.resultsEmailForm.addEventListener('submit', (e) => this.handleResultsSubmit(e));
   }
 
   parseText(text) {
@@ -314,6 +317,38 @@ class RSVPReader {
       
       setTimeout(() => {
         this.submitText.textContent = 'download';
+      }, 2000);
+    }
+  }
+
+  async handleResultsSubmit(e) {
+    e.preventDefault();
+    
+    const email = this.resultsEmailInput.value.trim();
+    if (!email) return;
+    
+    const submitBtn = this.resultsEmailForm.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    this.resultsSubmitText.textContent = 'Sending...';
+    
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      
+      if (!response.ok) throw new Error('Failed to subscribe');
+      
+      this.sentEmail.textContent = email;
+      this.setState('success');
+    } catch (error) {
+      console.error('Subscription error:', error);
+      this.resultsSubmitText.textContent = 'Error - Try again';
+      submitBtn.disabled = false;
+      
+      setTimeout(() => {
+        this.resultsSubmitText.textContent = 'download';
       }, 2000);
     }
   }

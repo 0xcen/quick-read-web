@@ -416,22 +416,44 @@ kbd {
 /* Results state */
 #results-state {
   text-align: center;
+  max-width: 400px;
 }
 
 .results-content {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.results-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
 }
 
 #results-wpm {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   letter-spacing: -0.02em;
 }
 
 .results-detail {
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 0.875rem;
+}
+
+.results-pitch {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.results-pitch strong {
+  color: var(--text);
+}
+
+#results-state .email-form {
+  margin-bottom: 1rem;
 }
 
 .results-actions {
@@ -440,9 +462,19 @@ kbd {
   justify-content: center;
 }
 
-#results-state .submit-btn {
-  border-radius: 8px;
-  padding: 0.875rem 1.75rem;
+.text-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.text-link:hover {
+  color: var(--text);
 }
 
 /* Success state */
