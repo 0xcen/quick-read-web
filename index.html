@@ -37,14 +37,19 @@
           <div id="progress-bar" class="progress-bar"></div>
         </div>
         <div class="controls">
+          <button id="prev-word" class="nav-btn">←</button>
           <span id="wpm-display">400 WPM</span>
           <span class="separator">·</span>
           <span id="progress-text">0%</span>
+          <button id="next-word" class="nav-btn">→</button>
         </div>
       </div>
 
       <!-- Email state -->
       <div id="email-state" class="state hidden">
+        <div id="read-summary" class="read-summary hidden">
+          <span id="summary-wpm">450</span> WPM · <span id="summary-words">0</span> words in <span id="summary-time">0</span>s · <button id="read-again" class="text-link">read again</button>
+        </div>
         <div class="pitch-text">
           <h1>Did you know you can read at over 400 words per minute?</h1>
           <p>Me neither. Until I saw <a href="https://x.com/UltraLinx/status/2011434505253650868" target="_blank">this viral tweet</a>.</p>
@@ -86,25 +91,6 @@
           </div>
         </form>
         <button id="back-from-custom" class="back-link">← back</button>
-      </div>
-
-      <!-- Results state -->
-      <div id="results-state" class="state hidden">
-        <div class="results-content">
-          <p class="results-label">You just read at</p>
-          <h1 id="results-wpm">450 WPM</h1>
-          <p class="results-detail"><span id="results-words">0</span> words in <span id="results-time">0</span> seconds</p>
-        </div>
-        <div class="results-pitch">
-          <p>This is <strong>QuickRead</strong> — a free macOS app that speed reads any article with one hotkey. No distractions. Open source.</p>
-        </div>
-        <form id="results-email-form" class="email-form">
-          <input type="email" id="results-email-input" placeholder="your@email.com" required autocomplete="email">
-          <button type="submit" class="submit-btn"><span id="results-submit-text">download</span></button>
-        </form>
-        <div class="results-actions">
-          <button id="copy-share-link" class="text-link">Copy share link</button>
-        </div>
       </div>
 
       <!-- Success state -->

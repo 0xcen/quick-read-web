@@ -35,7 +35,6 @@ class RSVPReader {
     this.readingState = document.getElementById('reading-state');
     this.emailState = document.getElementById('email-state');
     this.customState = document.getElementById('custom-state');
-    this.resultsState = document.getElementById('results-state');
     this.successState = document.getElementById('success-state');
     
     this.playBtn = document.getElementById('play-btn');
@@ -44,6 +43,8 @@ class RSVPReader {
     this.wpmDisplay = document.getElementById('wpm-display');
     this.progressText = document.getElementById('progress-text');
     this.keyboardHints = document.getElementById('keyboard-hints');
+    this.prevWordBtn = document.getElementById('prev-word');
+    this.nextWordBtn = document.getElementById('next-word');
     
     this.emailForm = document.getElementById('email-form');
     this.emailInput = document.getElementById('email-input');
@@ -57,14 +58,11 @@ class RSVPReader {
     this.backFromCustomBtn = document.getElementById('back-from-custom');
     this.shareBeforeReadBtn = document.getElementById('share-before-read');
     
-    this.resultsWpm = document.getElementById('results-wpm');
-    this.resultsWords = document.getElementById('results-words');
-    this.resultsTime = document.getElementById('results-time');
-    this.copyShareLinkBtn = document.getElementById('copy-share-link');
-    
-    this.resultsEmailForm = document.getElementById('results-email-form');
-    this.resultsEmailInput = document.getElementById('results-email-input');
-    this.resultsSubmitText = document.getElementById('results-submit-text');
+    this.readSummary = document.getElementById('read-summary');
+    this.summaryWpm = document.getElementById('summary-wpm');
+    this.summaryWords = document.getElementById('summary-words');
+    this.summaryTime = document.getElementById('summary-time');
+    this.readAgainBtn = document.getElementById('read-again');
   }
 
   initEventListeners() {
@@ -77,9 +75,10 @@ class RSVPReader {
     this.tryOwnTextBtn.addEventListener('click', () => this.setState('custom'));
     this.backFromCustomBtn.addEventListener('click', () => this.setState('email'));
     this.customForm.addEventListener('submit', (e) => this.handleCustomSubmit(e));
-    this.copyShareLinkBtn.addEventListener('click', () => this.copyShareLink());
     this.shareBeforeReadBtn.addEventListener('click', () => this.shareBeforeRead());
-    this.resultsEmailForm.addEventListener('submit', (e) => this.handleResultsSubmit(e));
+    this.readAgainBtn.addEventListener('click', () => this.readAgain());
+    this.prevWordBtn.addEventListener('click', () => this.stepBack());
+    this.nextWordBtn.addEventListener('click', () => this.stepForward());
   }
 
   parseText(text) {
@@ -196,6 +195,24 @@ class RSVPReader {
     this.wpmDisplay.textContent = `${this.wpm} WPM`;
   }
 
+  stepBack() {
+    if (this.state !== 'reading') return;
+    this.currentIndex = Math.max(0, this.currentIndex - 1);
+    this.renderWord();
+    this.updateProgress();
+  }
+
+  stepForward() {
+    if (this.state !== 'reading') return;
+    if (this.currentIndex < this.words.length - 1) {
+      this.currentIndex++;
+      this.renderWord();
+      this.updateProgress();
+    } else {
+      this.finish();
+    }
+  }
+
   finish() {
     this.pause();
     this.keyboardHints.classList.remove('visible');
@@ -206,16 +223,16 @@ class RSVPReader {
       const wordCount = this.words.length;
       const actualWpm = Math.round((wordCount / elapsed) * 60);
       
-      this.resultsWpm.textContent = `${actualWpm} WPM`;
-      this.resultsWords.textContent = wordCount;
-      this.resultsTime.textContent = Math.round(elapsed);
+      this.summaryWpm.textContent = actualWpm;
+      this.summaryWords.textContent = wordCount;
+      this.summaryTime.textContent = Math.round(elapsed);
+      this.readSummary.classList.remove('hidden');
       
-      this.setState('results');
       this.isCustomText = false;
-    } else {
-      this.setState('email');
-      setTimeout(() => this.emailInput.focus(), 300);
     }
+    
+    this.setState('email');
+    setTimeout(() => this.emailInput.focus(), 300);
   }
 
   reset() {
@@ -235,7 +252,6 @@ class RSVPReader {
     this.readingState.classList.add('hidden');
     this.emailState.classList.add('hidden');
     this.customState.classList.add('hidden');
-    this.resultsState.classList.add('hidden');
     this.successState.classList.add('hidden');
     
     switch (state) {
@@ -251,9 +267,6 @@ class RSVPReader {
       case 'custom':
         this.customState.classList.remove('hidden');
         setTimeout(() => this.customInput.focus(), 100);
-        break;
-      case 'results':
-        this.resultsState.classList.remove('hidden');
         break;
       case 'success':
         this.successState.classList.remove('hidden');
@@ -282,6 +295,14 @@ class RSVPReader {
       case 'ArrowDown':
         e.preventDefault();
         this.adjustSpeed(-50);
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        this.stepBack();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        this.stepForward();
         break;
       case 'Escape':
         e.preventDefault();
@@ -321,35 +342,15 @@ class RSVPReader {
     }
   }
 
-  async handleResultsSubmit(e) {
-    e.preventDefault();
-    
-    const email = this.resultsEmailInput.value.trim();
-    if (!email) return;
-    
-    const submitBtn = this.resultsEmailForm.querySelector('.submit-btn');
-    submitBtn.disabled = true;
-    this.resultsSubmitText.textContent = 'Sending...';
-    
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      
-      if (!response.ok) throw new Error('Failed to subscribe');
-      
-      this.sentEmail.textContent = email;
-      this.setState('success');
-    } catch (error) {
-      console.error('Subscription error:', error);
-      this.resultsSubmitText.textContent = 'Error - Try again';
-      submitBtn.disabled = false;
-      
-      setTimeout(() => {
-        this.resultsSubmitText.textContent = 'download';
-      }, 2000);
+  readAgain() {
+    if (this.customTextContent) {
+      this.parseText(this.customTextContent);
+      this.isCustomText = true;
+      this.start();
+    } else if (this.sharedText) {
+      this.parseText(this.sharedText);
+      this.isCustomText = true;
+      this.start();
     }
   }
 
