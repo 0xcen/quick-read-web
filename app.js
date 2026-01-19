@@ -196,16 +196,18 @@ class RSVPReader {
 
   stepBack() {
     if (this.state !== 'reading') return;
+    this.pause();
     this.currentIndex = Math.max(0, this.currentIndex - 1);
-    this.renderWord();
+    this.renderWord(this.words[this.currentIndex]);
     this.updateProgress();
   }
 
   stepForward() {
     if (this.state !== 'reading') return;
+    this.pause();
     if (this.currentIndex < this.words.length - 1) {
       this.currentIndex++;
-      this.renderWord();
+      this.renderWord(this.words[this.currentIndex]);
       this.updateProgress();
     } else {
       this.finish();
